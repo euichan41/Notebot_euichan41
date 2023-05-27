@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "id": "notebot",
+  "version": "${version}",
+  "name": "NoteBot",
+  "description": "A mod plays noteblock nicely for you!",
+  "authors": [
+    "Nat1an"
+  ],
+  "contact": {
+    "homepage": "https://nat1an.xyz/",
+    "sources": "https://github.com/Nat1anWasTaken/Notebot"
+  },
+  "license": "GNU General Public License",
+  "icon": "assets/notebot/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "xyz.nat1an.notebot.Notebot"
+    ]
+  },
+  "mixins": [],
+  "depends": {
+    "fabricloader": ">=0.14.17",
+    "fabric-api": "*",
+    "minecraft": ">1.19",
+    "java": ">=17"
+  },
+  "suggests": {
+    "another-mod": "*"
+  }
+}
