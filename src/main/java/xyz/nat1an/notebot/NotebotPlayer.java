@@ -7,7 +7,6 @@ You should have received a copy of the GNU General Public License along with Not
 
 package xyz.nat1an.notebot;
 
-import net.minecraft.block.Material;
 import net.minecraft.block.Block;
 import net.minecraft.block.NoteBlock;
 import net.minecraft.block.enums.Instrument;
@@ -79,65 +78,7 @@ public class NotebotPlayer {
     }
 
     public static Instrument blockToInstrument(Block block) {
-
-        // Specific block checks
-        Identifier blockId = Registries.BLOCK.getId(block);
-        String blockIdString = blockId.toString();
-        Instrument instrument = Instrument.HARP;  // Default to Harp for any other block
-
-
-        if (blockIdString.equals("minecraft:dirt")) {
-            return Instrument.HARP;
-        } else if (blockIdString.equals("minecraft:clay")) {
-            return Instrument.FLUTE;
-        } else if (blockIdString.equals("minecraft:gold_block")) {
-            return Instrument.BELL;
-        } else if (blockIdString.equals("minecraft:packed_ice")) {
-            return Instrument.CHIME;
-        } else if (blockIdString.equals("minecraft:bone_block")) {
-            return Instrument.XYLOPHONE;
-        } else if (blockIdString.equals("minecraft:iron_block")) {
-            return Instrument.IRON_XYLOPHONE;
-        } else if (blockIdString.equals("minecraft:soul_sand")) {
-            return Instrument.COW_BELL;
-        } else if (blockIdString.equals("minecraft:pumpkin")) {
-            return Instrument.DIDGERIDOO;
-        } else if (blockIdString.equals("minecraft:emerald_block")) {
-            return Instrument.BIT;
-        } else if (blockIdString.equals("minecraft:hay_block")) {
-            return Instrument.BANJO;
-        } else if (blockIdString.equals("minecraft:glowstone")) {
-            return Instrument.PLING;
-        } else if (blockIdString.equals("minecraft:sand") || blockIdString.equals("minecraft:gravel") || blockIdString.equals("minecraft:concrete_powder")) {
-            return Instrument.SNARE;
-        } else if (Arrays.asList("minecraft:stone", "minecraft:cobblestone", "minecraft:blackstone", "minecraft:netherrack", "minecraft:nylium", "minecraft:obsidian",
-                "minecraft:quartz", "minecraft:sandstone", "minecraft:ores", "minecraft:bricks", "minecraft:corals",
-                "minecraft:respawn_anchor", "minecraft:bedrock", "minecraft:concrete").contains(blockIdString)) {
-            return Instrument.BASEDRUM;
-        } else if (blockIdString.equals("minecraft:glass")) {
-            return Instrument.HAT;
-        }
-
-
-        Material material = block.getDefaultState().getMaterial();
-
-        // Check for blocks with specific materials
-        if (material.equals(Material.WOOD)) {
-            return Instrument.BASS;
-        }
-        if (material.equals(Material.WOOL)) {
-            return Instrument.GUITAR;
-        }
-        if (material.equals(Material.GLASS)) {
-            return Instrument.HAT;
-        }
-        if (material.equals(Material.STONE)) {
-            return Instrument.BASEDRUM;
-        }
-
-
-
-        return instrument;
+        return block.getDefaultState().getInstrument();
     }
 
     public static boolean isNoteblock(BlockPos pos) {
